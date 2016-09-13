@@ -82,15 +82,15 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals('1', $captcha->left()->toString());
 	}
 
-	/*function testRightShouldBeFive() {
+	function testRightShouldBeFive() {
 		$captcha = new Captcha($this->DUMMY_PATTERN,$this->DUMMY_LEFT,$this->DUMMY_OPERATOR,5);
-		$this->assertEquals('5', $captcha->right());
+		$this->assertEquals('5', $captcha->right()->toString());
 	}
 
 	function testRightShouldBeNine() {
 		$captcha = new Captcha($this->DUMMY_PATTERN,$this->DUMMY_LEFT,$this->DUMMY_OPERATOR,9);
-		$this->assertEquals("9", $captcha->right());
-	}*/
+		$this->assertEquals("9", $captcha->right()->toString());
+	}
 
 	function testRightShouldBeONE(){
 		$captcha=new Captcha($this->DUMMY_PATTERN,$this->DUMMY_LEFT,$this->DUMMY_OPERATOR,1);
