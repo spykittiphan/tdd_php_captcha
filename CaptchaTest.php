@@ -5,10 +5,11 @@ class Captcha
 	{
 		$this->left = $left;
 	}
-		function operator()
-		{
-			return "+";
-		}	
+	
+	function operator()
+	{
+		return "+";
+	}	
 
 	function left()
 	{
