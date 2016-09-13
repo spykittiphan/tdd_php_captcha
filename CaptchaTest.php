@@ -7,7 +7,7 @@ class Captcha
 	private $NUMBER_TO_TEXT = [1=>"ONE",2=>"TWO",3=>"THREE",4=>"FOUR",5=>"FIVE",6=>"SIX",7=>"SEVEN",8=>"EIGHT",9=>"NINE"];
 	function __construct($pattern, $left, $operator, $right)
 	{
-		$this->left = $left;
+		$this->left = $this->createLeft($pattern,$left);
 		$this->right = $right;
 		$this->pattern = $pattern;
 		$this->operator = new Operator($operator);
@@ -16,15 +16,19 @@ class Captcha
 	function operator()
 	{
 		return $this->operator;
-	}	
+	}
 
-	function left()
+	function left(){
+		return $this->left;
+	}
+
+	function createLeft($pattern,$left)
 	{
-		if($this->pattern==2)
+		if($pattern==2)
 		{
-			return new IntegerOperand($this->left);
+			return new IntegerOperand($left);
 		}
-		return new StringOperand($this->left);
+		return new StringOperand($left);
 	}
 
 	function right(){
