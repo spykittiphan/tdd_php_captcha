@@ -35,17 +35,17 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 	private $DUMMY_LEFT = 1;
 
 	function testRightShouldBeFive() {
-		$captcha = new Captcha(1,1,1,5);
+		$captcha = new Captcha($this->DUMMY_PATTERN,$this->DUMMY_LEFT,$this->DUMMY_OPERATOR,5);
 		$this->assertEquals('5', $captcha->right());
 	}
 
 	function testRightShouldBeNine() {
-		$captcha = new Captcha(1,1,1,9);
+		$captcha = new Captcha($this->DUMMY_PATTERN,$this->DUMMY_LEFT,$this->DUMMY_OPERATOR,9);
 		$this->assertEquals("9", $captcha->right());
 	}
 
 	function testRightShouldBeONE(){
-		$captcha=new Captcha(1,1,1,1);
+		$captcha=new Captcha($this->DUMMY_PATTERN,$this->DUMMY_LEFT,$this->DUMMY_OPERATOR,1);
 		$this->assertEquals("1",$captcha->right());
 	}
 
