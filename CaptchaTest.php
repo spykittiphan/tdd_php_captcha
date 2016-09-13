@@ -16,7 +16,7 @@ class Captcha
 	{
 		
 		// $_operator = [1=>"+",2=>"-",3=>"*",4=>"/"];
-		return $this->operator->toString();
+		return $this->operator;
 	}	
 
 	function left()
@@ -37,10 +37,8 @@ class Captcha
 	}
 
 	function toString() {
-		if($this->pattern == 2){
-			return "1 + ONE";
-		}
-		return "ONE + 1";
+
+		return $this->left().' '.$this->operator->toString().' '.$this->right();
 	}
 
 }
@@ -101,37 +99,6 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 		$captcha=new Captcha($this->DUMMY_PATTERN,$this->DUMMY_LEFT,$this->DUMMY_OPERATOR,1);
 		$this->assertEquals("1",$captcha->right());
 	}
-
-	// function testOperatorShouldBeMultiply(){
-	// 	$captcha = new Captcha($this->DUMMY_PATTERN,$this->DUMMY_LEFT,3,$this->DUMMY_RIGHT);
-	// 	$this->assertEquals("*",$captcha->operator());
-	// }
-
-	// function testOperatorShouldBeMinus()
-	// {
-	// 	$captcha = new Captcha($this->DUMMY_PATTERN,$this->DUMMY_LEFT,2,$this->DUMMY_RIGHT);
-	// 	$this->assertEquals("-",$captcha->operator());
-	// }
-
-	function testOperatorShouldBeMinus()  
-	{
-
-		$captcha = new Captcha($this->DUMMY_PATTERN,$this->DUMMY_LEFT,3,$this->DUMMY_RIGHT);
-		$this->assertEquals("-",$captcha->operator->toString(3));
-	}
-
-	// function testOperatorShouldBePlus()
-	// {
-	// 	$captcha = new Captcha($this->DUMMY_PATTERN,$this->DUMMY_LEFT,1,$this->DUMMY_RIGHT);
-	// 	$this->assertEquals("+",$captcha->operator());
-	// }
-
-	function testLeftShouldBeNINE()
-	{
-	 	$captcha = new Captcha($this->DUMMY_PATTERN,9,$this->DUMMY_OPERATOR,$this->DUMMY_RIGHT);
-	 	$this->assertEquals("NINE",$captcha->left());
-
-	 }
 
 	function testLeftShouldBeONE() 
 	{
