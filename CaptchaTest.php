@@ -30,6 +30,9 @@ class Captcha
 
 	function right(){
 		if($this->pattern==2){
+			if($this->right==9){
+				return "NINE";
+			}
 			return "ONE";
 		}
 		return $this->right;
@@ -43,6 +46,11 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 	private $DUMMY_RIGHT = 1;
 	private $DUMMY_LEFT = 1;
 
+	function testRightSecondShouldBeNine()
+	{
+		$captcha = new Captcha(2,1,1,9);
+		$this->assertEquals("NINE",$captcha->right());
+	}
 	function testRightSecondShouldBeOne()
 	{
 		$captcha = new Captcha(2,1,1,1);
