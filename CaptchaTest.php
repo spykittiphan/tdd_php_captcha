@@ -34,6 +34,10 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 	private $DUMMY_RIGHT = 1;
 	private $DUMMY_LEFT = 1;
 
+	function testRightShouldBeFive() {
+		$captcha = new Captcha(1,1,1,5);
+		$this->assertEquals('5', $captcha->right());
+	}
 
 	function testRightShouldBeNine() {
 		$captcha = new Captcha(1,1,1,9);
