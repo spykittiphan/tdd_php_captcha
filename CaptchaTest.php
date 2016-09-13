@@ -2,13 +2,32 @@
 require "OperatorTest.php";
 require "StringOperandTest.php";
 require "IntegerOperandTest.php";
+
+class OperandFactory{
+	static function createLeft($pattern,$left)
+	{
+		if($pattern==2)
+		{
+			return new IntegerOperand($left);
+		}
+		return new StringOperand($left);
+	}
+
+	static function createRight($pattern,$right){
+		if($pattern==2){
+			return new StringOperand($right);
+		}
+		return new IntegerOperand($right);
+	}
+}
+
 class Captcha
 {
 	private $NUMBER_TO_TEXT = [1=>"ONE",2=>"TWO",3=>"THREE",4=>"FOUR",5=>"FIVE",6=>"SIX",7=>"SEVEN",8=>"EIGHT",9=>"NINE"];
 	function __construct($pattern, $left, $operator, $right)
 	{
-		$this->left = $this->createLeft($pattern,$left);
-		$this->right = $this->createRight($pattern,$right);
+		$this->left = OperandFactory::createLeft($pattern,$left);
+		$this->right = OperandFactory::createRight($pattern,$right);
 		$this->pattern = $pattern;
 		$this->operator = new Operator($operator);
 	}
@@ -26,21 +45,7 @@ class Captcha
 		return $this->right;
 	}
 
-	function createLeft($pattern,$left)
-	{
-		if($pattern==2)
-		{
-			return new IntegerOperand($left);
-		}
-		return new StringOperand($left);
-	}
-
-	function createRight($pattern,$right){
-		if($pattern==2){
-			return new StringOperand($right);
-		}
-		return new IntegerOperand($right);
-	}
+	
 
 	function toString() {
 		return $this->left()->toString().' '.$this->operator->toString().' '.$this->right()->toString();
