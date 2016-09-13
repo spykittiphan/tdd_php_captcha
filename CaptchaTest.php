@@ -1,12 +1,14 @@
 <?php
 class Captcha
 {
+	private $NUMBER_TO_TEXT = [1=>"ONE",2=>"TWO",3=>"THREE",4=>"FOUR",5=>"FIVE",6=>"SIX",7=>"SEVEN",8=>"EIGHT",9=>"NINE"];
 	function __construct($pattern, $left, $operator, $right)
 	{
 		$this->left = $left;
 		$this->operator = $operator;
 		$this->right = $right;
 		$this->pattern = $pattern;
+
 
 	}
 	
@@ -19,22 +21,22 @@ class Captcha
 
 	function left()
 	{
-		$_left =[1=>"ONE",2=>"TWO",3=>"THREE",4=>"FOUR",5=>"FIVE",6=>"SIX",7=>"SEVEN",8=>"EIGHT",9=>"NINE"];
 		if($this->pattern==2)
 		{
 			return $this->left;
 		}
 		
-		return $_left[$this->left];
+		return $this->NUMBER_TO_TEXT[$this->left];
 	}
 
 	function right(){
-		$_right = [1=>"ONE",2=>"TWO",3=>"THREE",4=>"FOUR",5=>"FIVE",6=>"SIX",7=>"SEVEN",8=>"EIGHT",9=>"NINE"];
 		if($this->pattern==2){
-			return $_right[$this->right];
+			return $this->NUMBER_TO_TEXT[$this->right];
 		}
 		return $this->right;
 	}
+
+
 }
 
 class CaptchaTest extends PHPUnit_Framework_TestCase 
