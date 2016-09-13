@@ -5,6 +5,7 @@ class Captcha
 	{
 		$this->left = $left;
 		$this->operator = $operator;
+		$this->right=$right;
 	}
 	
 	function operator()
@@ -20,6 +21,10 @@ class Captcha
 		
 		return $_left[$this->left];
 	}
+
+	function right(){
+		return "1";
+	}
 }
 
 class CaptchaTest extends PHPUnit_Framework_TestCase 
@@ -30,7 +35,10 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 	private $DUMMY_LEFT = 1;
 
 
-
+	function testRightShouldBeONE(){
+		$captcha=new Captcha(1,1,1,1);
+		$this->assertEquals("1",$captcha->right());
+	}
 
 	function testOperatorShouldBeMultiply(){
 		$captcha = new Captcha($this->DUMMY_PATTERN,$this->DUMMY_LEFT,3,$this->DUMMY_RIGHT);
