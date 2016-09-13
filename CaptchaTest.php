@@ -4,6 +4,7 @@ class Captcha
 	function __construct($pattern, $left, $operator, $right)
 	{
 		$this->left = $left;
+		$this->operator = $operator;
 	}
 	
 	function operator()
@@ -11,8 +12,10 @@ class Captcha
 		if($this->operator==2)
 		{
 			return "-";
+		}else if($this->operator == 1) {
+			return "+";
 		}
-		return "+";
+		
 	}	
 
 	function left()
@@ -35,7 +38,7 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals("-",$captcha->operator());
 	}
 
-	function testOperator()
+	function testOperatorShouldBePlus()
 	{
 		$captcha = new Captcha(1,1,1,1);
 		$this->assertEquals("+",$captcha->operator());
