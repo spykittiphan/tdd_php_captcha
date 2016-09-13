@@ -14,13 +14,13 @@ class Captcha
 			return "-";
 		}else if($this->operator == 1) {
 			return "+";
-		}
+		}else return "*";
 		
 	}	
 
 	function left()
 	{
-		$_left =[1=>"ONE",2=>"TWO",3=>"THREE",4="FOUR",5="FIVE",6=>"SIX",7=>"SEVEN",8=>"EIGHT",9=>"NINE"];
+		$_left =[1=>"ONE",2=>"TWO",3=>"THREE",4=>"FOUR",5=>"FIVE",6=>"SIX",7=>"SEVEN",8=>"EIGHT",9=>"NINE"];
 		
 		return $_left[$this->left];
 	}
@@ -31,6 +31,11 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 	private $DUMMY_PATTERN = 1;
 	private $DUMMY_OPERATOR = 1;
 	private $DUMMY_RIGHT = 1;
+
+	function testOperatorShouldBeMultiply(){
+		$captcha = new Captcha(1,1,3,1);
+		$this->assertEquals("*",$captcha->operator());
+	}
 
 	function testOperatorShouldBeMinus()
 	{
