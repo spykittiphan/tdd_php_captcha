@@ -1,6 +1,6 @@
 <?php
 
-class Operand { 
+class StringOperand { 
 	function __construct($number) 
 	{
 		$this->number = $number;
@@ -8,6 +8,8 @@ class Operand {
 	function toString(){
 		if($this->number==2){
 			return "TWO";
+		}else if($this->number==9){
+			return "NINE";
 		}
 		return "ONE";
 	}
@@ -15,13 +17,20 @@ class Operand {
 }
 class StringOperandTest extends PHPUnit_Framework_TestCase
 {
+
+	function testStringOperandNine()
+	{
+		$stringOperand = new StringOperand(9);
+		$this->assertEquals("NINE",$stringOperand->toString());
+	}
+
 	function testStringOperandONE(){
-		$stringOperand = new Operand(1);
+		$stringOperand = new StringOperand(1);
 		$this->assertEquals('ONE',$stringOperand->toString());
 	}
 
 	function testStringOperandTWO(){
-		$stringOperand = new Operand(2);
+		$stringOperand = new StringOperand(2);
 		$this->assertEquals('TWO',$stringOperand->toString());
 	}
 
