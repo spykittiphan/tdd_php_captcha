@@ -21,7 +21,10 @@ class Captcha
 	{
 		$_left =[1=>"ONE",2=>"TWO",3=>"THREE",4=>"FOUR",5=>"FIVE",6=>"SIX",7=>"SEVEN",8=>"EIGHT",9=>"NINE"];
 		if($this->pattern==2)
-		return 1;
+		{
+			return $this->left;
+		}
+		//return 1;
 		return $_left[$this->left];
 	}
 
@@ -36,6 +39,11 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 	private $DUMMY_OPERATOR = 1;
 	private $DUMMY_RIGHT = 1;
 	private $DUMMY_LEFT = 1;
+
+	function testLeftSecondShouldBeNine(){
+		$captcha = new Captcha(2,9,1,1);
+		$this->assertEquals('9',$captcha->left());
+	}
 
 	function testSecondShouldBeOne(){
 		$captcha = new Captcha(2,1,1,1);
