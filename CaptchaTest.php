@@ -5,6 +5,10 @@ class Captcha
 	{
 		$this->left = $left;
 	}
+		function operator()
+		{
+			return "+";
+		}	
 
 	function left()
 	{
@@ -19,6 +23,12 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 	private $DUMMY_PATTERN = 1;
 	private $DUMMY_OPERATOR = 1;
 	private $DUMMY_RIGHT = 1;
+
+	function testOperator()
+	{
+		$captcha = new Captcha(1,1,1,1);
+		$this->assertEquals("+",$captcha->operator());
+	}
 
 	function testLeftShouldBeNINE()
 	{
