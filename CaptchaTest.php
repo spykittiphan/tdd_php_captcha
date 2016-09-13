@@ -1,8 +1,10 @@
 <?php
 require "OperatorTest.php";
+require "StringOperandTest.php";
+require "IntegerOperandTest.php";
 class Captcha
 {
-	
+	private $NUMBER_TO_TEXT = [1=>"ONE",2=>"TWO",3=>"THREE",4=>"FOUR",5=>"FIVE",6=>"SIX",7=>"SEVEN",8=>"EIGHT",9=>"NINE"];
 	function __construct($pattern, $left, $operator, $right)
 	{
 		$this->left = $left;
@@ -20,9 +22,9 @@ class Captcha
 	{
 		if($this->pattern==2)
 		{
-			return $this->left;
+			return new IntegerOperand($this->left);
 		}
-		return $this->NUMBER_TO_TEXT[$this->left];
+		return new StringOperand($this->left);
 	}
 
 	function right(){
@@ -33,7 +35,7 @@ class Captcha
 	}
 
 	function toString() {
-		return $this->left().' '.$this->operator->toString().' '.$this->right();
+		return $this->left()->toString().' '.$this->operator->toString().' '.$this->right();
 	}
 
 }
@@ -72,12 +74,12 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 
 	function testSecondPatternLeftShouldBeNine(){
 		$captcha = new Captcha(2,9,1,1);
-		$this->assertEquals('9',$captcha->left());
+		$this->assertEquals('9',$captcha->left()->toString());
 	}
 
 	function testSecondPatternLeftShouldBeOne(){
 		$captcha = new Captcha(2,1,1,1);
-		$this->assertEquals('1', $captcha->left());
+		$this->assertEquals('1', $captcha->left()->toString());
 	}
 
 	function testRightShouldBeFive() {
@@ -100,13 +102,13 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 
 		$captcha = new Captcha($this->DUMMY_PATTERN, 1, $this->DUMMY_OPERATOR, 
 			$this->DUMMY_RIGHT);
-		$this->assertEquals("ONE", $captcha->left());
+		$this->assertEquals("ONE", $captcha->left()->toString());
 	}
 
 	function testLeftShouldBeTWO() 
 	{
 		$captcha = new Captcha($this->DUMMY_PATTERN, 2, $this->DUMMY_OPERATOR, $this->DUMMY_RIGHT);
-		$this->assertEquals("TWO", $captcha->left());
+		$this->assertEquals("TWO", $captcha->left()->toString());
 	}
 
 
