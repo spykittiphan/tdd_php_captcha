@@ -29,7 +29,7 @@ class Captcha
 	}
 
 	function right(){
-		$_right = [1=>"ONE",9=>"NINE"];
+		$_right = [1=>"ONE",2=>"TWO",3=>"THREE",4=>"FOUR",5=>"FIVE",6=>"SIX",7=>"SEVEN",8=>"EIGHT",9=>"NINE"];
 		if($this->pattern==2){
 			return $_right[$this->right];
 		}
