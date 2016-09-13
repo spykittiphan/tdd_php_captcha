@@ -18,7 +18,7 @@ class Operator
 			case 3:
 				return "-";
 				break;
-			default:
+			case 4:
 				return "/";
 				break;
 		}
@@ -29,6 +29,10 @@ class Operator
 
 class OperatorTest extends PHPUnit_Framework_TestCase 
 {
+	function testOperatorShouldBeminus(){
+		$operator = new Operator(3);
+		$this->assertEquals("-",$operator->toString());
+	}
 	function testOperatorShoudBePlus()
 	{
 		$operator = new Operator(1);
