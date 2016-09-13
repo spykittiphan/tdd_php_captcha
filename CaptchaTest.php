@@ -29,11 +29,9 @@ class Captcha
 	}
 
 	function right(){
+		$_right = [1=>"ONE",9=>"NINE"];
 		if($this->pattern==2){
-			if($this->right==9){
-				return "NINE";
-			}
-			return "ONE";
+			return $_right[$this->right];
 		}
 		return $this->right;
 	}
