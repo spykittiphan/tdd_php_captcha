@@ -46,22 +46,22 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 	private $DUMMY_RIGHT = 1;
 	private $DUMMY_LEFT = 1;
 
-	function testRightSecondShouldBeNine()
+	function testSecondPatternRightSecondShouldBeNine()
 	{
 		$captcha = new Captcha(2,1,1,9);
 		$this->assertEquals("NINE",$captcha->right());
 	}
-	function testRightSecondShouldBeOne()
+	function testSecondPatterRightSecondShouldBeOne()
 	{
 		$captcha = new Captcha(2,1,1,1);
 		$this->assertEquals("ONE",$captcha->right());
 	}
-	function testLeftSecondShouldBeNine(){
+	function testSecondPatternLeftShouldBeNine(){
 		$captcha = new Captcha(2,9,1,1);
 		$this->assertEquals('9',$captcha->left());
 	}
 
-	function testSecondShouldBeOne(){
+	function testSecondPatternLeftShouldBeOne(){
 		$captcha = new Captcha(2,1,1,1);
 		$this->assertEquals('1', $captcha->left());
 	}
