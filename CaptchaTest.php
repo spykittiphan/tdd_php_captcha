@@ -27,21 +27,25 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 	private $DUMMY_PATTERN = 1;
 	private $DUMMY_OPERATOR = 1;
 	private $DUMMY_RIGHT = 1;
+	private $DUMMY_LEFT = 1;
+
+
+
 
 	function testOperatorShouldBeMultiply(){
-		$captcha = new Captcha(1,1,3,1);
+		$captcha = new Captcha($this->DUMMY_PATTERN,$this->DUMMY_LEFT,3,$this->DUMMY_RIGHT);
 		$this->assertEquals("*",$captcha->operator());
 	}
 
 	function testOperatorShouldBeMinus()
 	{
-		$captcha = new Captcha(1,1,2,1);
+		$captcha = new Captcha($this->DUMMY_PATTERN,$this->DUMMY_LEFT,2,$this->DUMMY_RIGHT);
 		$this->assertEquals("-",$captcha->operator());
 	}
 
 	function testOperatorShouldBePlus()
 	{
-		$captcha = new Captcha(1,1,1,1);
+		$captcha = new Captcha($this->DUMMY_PATTERN,$this->DUMMY_LEFT,1,$this->DUMMY_RIGHT);
 		$this->assertEquals("+",$captcha->operator());
 	}
 
