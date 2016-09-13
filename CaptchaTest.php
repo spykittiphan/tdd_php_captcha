@@ -9,12 +9,8 @@ class Captcha
 	
 	function operator()
 	{
-		if($this->operator==2)
-		{
-			return "-";
-		}else if($this->operator == 1) {
-			return "+";
-		}else return "*";
+		$_operator = [1=>"+",2=>"-",3=>"*",4=>"/"];
+		return $_operator[$this->operator];
 		
 	}	
 
