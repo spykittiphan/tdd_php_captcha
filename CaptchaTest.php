@@ -24,7 +24,7 @@ class Captcha
 		{
 			return $this->left;
 		}
-		//return 1;
+		
 		return $_left[$this->left];
 	}
 
