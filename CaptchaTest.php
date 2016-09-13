@@ -8,15 +8,12 @@ class Captcha
 		$this->operator = $operator;
 		$this->right = $right;
 		$this->pattern = $pattern;
-
-
 	}
 	
 	function operator()
 	{
 		$_operator = [1=>"+",2=>"-",3=>"*",4=>"/"];
 		return $_operator[$this->operator];
-		
 	}	
 
 	function left()
@@ -36,6 +33,9 @@ class Captcha
 		return $this->right;
 	}
 
+	function toString() {
+		return "ONE + 1";
+	}
 
 }
 
@@ -45,6 +45,11 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 	private $DUMMY_OPERATOR = 1;
 	private $DUMMY_RIGHT = 1;
 	private $DUMMY_LEFT = 1;
+
+	function testCaptchaToString() {
+		$captcha = new Captcha(1,1,1,1);
+		$this->assertEquals("ONE + 1", $captcha->toString());
+	}
 
 	function testSecondPatternRightSecondShouldBeNine()
 	{
