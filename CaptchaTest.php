@@ -2,11 +2,10 @@
 require "OperatorTest.php";
 class Captcha
 {
-	private $NUMBER_TO_TEXT = [1=>"ONE",2=>"TWO",3=>"THREE",4=>"FOUR",5=>"FIVE",6=>"SIX",7=>"SEVEN",8=>"EIGHT",9=>"NINE"];
+	
 	function __construct($pattern, $left, $operator, $right)
 	{
 		$this->left = $left;
-		// $this->operator = $operator;
 		$this->right = $right;
 		$this->pattern = $pattern;
 		$this->operator = new Operator($operator);
@@ -14,8 +13,6 @@ class Captcha
 	
 	function operator()
 	{
-		
-		// $_operator = [1=>"+",2=>"-",3=>"*",4=>"/"];
 		return $this->operator;
 	}	
 
@@ -25,7 +22,6 @@ class Captcha
 		{
 			return $this->left;
 		}
-		
 		return $this->NUMBER_TO_TEXT[$this->left];
 	}
 
@@ -37,7 +33,6 @@ class Captcha
 	}
 
 	function toString() {
-
 		return $this->left().' '.$this->operator->toString().' '.$this->right();
 	}
 

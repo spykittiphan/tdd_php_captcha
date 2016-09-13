@@ -22,7 +22,7 @@ class IntegerOperandTest extends PHPUnit_Framework_TestCase
 	function testShouldBeNine()
 	{
 		$operand = new IntegerOperand(9);
-		$this->assertEquals("9",$operand->toString(9));
+		$this->assertEquals("9",$operand->toString());
 	}
 }
 
