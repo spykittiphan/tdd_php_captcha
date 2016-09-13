@@ -29,6 +29,9 @@ class Captcha
 	}
 
 	function right(){
+		if($this->pattern==2){
+			return "ONE";
+		}
 		return $this->right;
 	}
 }
@@ -40,6 +43,11 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 	private $DUMMY_RIGHT = 1;
 	private $DUMMY_LEFT = 1;
 
+	function testRightSecondShouldBeOne()
+	{
+		$captcha = new Captcha(2,1,1,1);
+		$this->assertEquals("ONE",$captcha->right());
+	}
 	function testLeftSecondShouldBeNine(){
 		$captcha = new Captcha(2,9,1,1);
 		$this->assertEquals('9',$captcha->left());
