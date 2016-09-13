@@ -8,7 +8,7 @@ class Captcha
 	function __construct($pattern, $left, $operator, $right)
 	{
 		$this->left = $this->createLeft($pattern,$left);
-		$this->right = $right;
+		$this->right = $this->createRight($pattern,$right);
 		$this->pattern = $pattern;
 		$this->operator = new Operator($operator);
 	}
@@ -22,6 +22,10 @@ class Captcha
 		return $this->left;
 	}
 
+	function right(){
+		return $this->right;
+	}
+
 	function createLeft($pattern,$left)
 	{
 		if($pattern==2)
@@ -31,11 +35,11 @@ class Captcha
 		return new StringOperand($left);
 	}
 
-	function right(){
-		if($this->pattern==2){
-			return new StringOperand($this->right);
+	function createRight($pattern,$right){
+		if($pattern==2){
+			return new StringOperand($right);
 		}
-		return new IntegerOperand($this->right);
+		return new IntegerOperand($right);
 	}
 
 	function toString() {
