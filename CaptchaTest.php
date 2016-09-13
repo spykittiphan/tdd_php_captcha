@@ -8,6 +8,10 @@ class Captcha
 	
 	function operator()
 	{
+		if($this->operator==2)
+		{
+			return "-";
+		}
 		return "+";
 	}	
 
@@ -24,6 +28,12 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 	private $DUMMY_PATTERN = 1;
 	private $DUMMY_OPERATOR = 1;
 	private $DUMMY_RIGHT = 1;
+
+	function testOperatorShouldBeMinus()
+	{
+		$captcha = new Captcha(1,1,2,1);
+		$this->assertEquals("-",$captcha->operator());
+	}
 
 	function testOperator()
 	{
