@@ -26,14 +26,16 @@ class Captcha
 		return $this->NUMBER_TO_TEXT[$this->left];
 	}
 
-	function right(){
+	function right()
+	{
 		if($this->pattern==2){
 			return $this->NUMBER_TO_TEXT[$this->right];
 		}
 		return $this->right;
 	}
 
-	function toString() {
+	function toString() 
+	{
 		return "ONE + 1";
 	}
 
@@ -46,7 +48,14 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 	private $DUMMY_RIGHT = 1;
 	private $DUMMY_LEFT = 1;
 
-	function testCaptchaToString() {
+	function testCaptchaPatternTwoToString() 
+	{
+		$captcha = new Captcha(2,1,1,1);
+		$this->assertEquals("1 + ONE", $captcha->toString());
+	}
+
+	function testCaptchaToString() 
+	{
 		$captcha = new Captcha(1,1,1,1);
 		$this->assertEquals("ONE + 1", $captcha->toString());
 	}
@@ -56,11 +65,13 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 		$captcha = new Captcha(2,1,1,9);
 		$this->assertEquals("NINE",$captcha->right());
 	}
+
 	function testSecondPatterRightSecondShouldBeOne()
 	{
 		$captcha = new Captcha(2,1,1,1);
 		$this->assertEquals("ONE",$captcha->right());
 	}
+
 	function testSecondPatternLeftShouldBeNine(){
 		$captcha = new Captcha(2,9,1,1);
 		$this->assertEquals('9',$captcha->left());
